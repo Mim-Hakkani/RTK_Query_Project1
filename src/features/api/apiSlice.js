@@ -6,9 +6,19 @@ export const apiSlice = createApi({
 	}),
 
 	endpoints: (builder) => ({
+
+        // for all videos api route
+
         getVideos : builder.query({
             query:()=> 'videos/'
 
+        }),
+
+
+        // get single video route 
+
+        getVideo:builder.query({
+          query:(id)=> `videos/${id}` 
         })
     }),
 
@@ -16,4 +26,4 @@ export const apiSlice = createApi({
 
 });
 
-export const {useGetVideosQuery} = apiSlice
+export const {useGetVideosQuery,useGetVideoQuery} = apiSlice
