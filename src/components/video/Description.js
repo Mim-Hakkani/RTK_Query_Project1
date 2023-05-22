@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import deleteImage from "../../assets/delete.svg";
 import editImage from "../../assets/edit.svg";
+import { useDeleteVideoMutation } from "../../features/api/apiSlice";
 
-export default function Description() {
+export default function Description({videoId}) {
+
+   const [deleteVideo,{data,isLoading,isError}]=useDeleteVideoMutation()
+    
+   const handleDeleteVideo =()=>{
+    deleteVideo(videoId)
+   }
+   
     return (
         <div>
             <h1 className="text-lg font-semibold tracking-tight text-slate-800">
@@ -36,7 +44,10 @@ export default function Description() {
                                 alt="Delete"
                             />
                         </div>
-                        <div className="text-sm leading-[1.7142857] text-slate-600 cursor-pointer">
+                        <div className="text-sm leading-[1.7142857] text-slate-600 cursor-pointer"
+                        onClick={handleDeleteVideo}
+                        
+                        >
                             Delete
                         </div>
                     </div>
